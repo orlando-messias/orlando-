@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as formActions from '../actions/formActions';
 
-const Form = ({ changeNome, changeEmail }) => {
+const Form = ({ update }) => {
   return (
     <form>
       <fieldset>
@@ -15,7 +15,7 @@ const Form = ({ changeNome, changeEmail }) => {
           required
           maxLength="40"
           size="40"
-          onChange={(event) => changeNome(event.target.value)}
+          onChange={(event) => update('nome', event.target.value)}
         />
         <label htmlFor="nome">Email</label>
         <input
@@ -23,7 +23,7 @@ const Form = ({ changeNome, changeEmail }) => {
           type="email"
           maxLength="50"
           size="50"
-          onChange={(event) => changeEmail(event.target.value)}
+          onChange={(event) => update('email', event.target.value)}
         />
         <label htmlFor="CPF">CPF</label>
         <input id="CPF" type="number" maxLength="11" size="11" />
@@ -55,15 +55,9 @@ const Form = ({ changeNome, changeEmail }) => {
   );
 };
 
-// const mapStateToProps = (state) => ({
-//   nome: state.formReducer.nome,
-// });
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeNome: (nome) => dispatch(formActions.nomeAction(nome)),
-    changeEmail: (email) => dispatch(formActions.emailAction(email)),
-
+    update: (field, newValue) => dispatch(formActions.nomeAction(field, newValue)),
   };
 };
 

@@ -1,4 +1,4 @@
-import { ON_CHANGE_NOME, ON_CHANGE_EMAIL } from '../actions/formActions';
+import { UPDATE_FORM } from '../actions/formActions';
 
 const INITIAL_STATE = {
   nome: '',
@@ -14,12 +14,9 @@ const INITIAL_STATE = {
 };
 
 function formReducer(state = INITIAL_STATE, action) {
-  // console.log(state)
   switch (action.type) {
-    case ON_CHANGE_NOME:
-      return { ...state, nome: action.nome };
-    case ON_CHANGE_EMAIL:
-      return { ...state, email: action.email };
+    case UPDATE_FORM:
+      return { ...state, [action.field]: action.newValue };
     default:
       return state;
   }

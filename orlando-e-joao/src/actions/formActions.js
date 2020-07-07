@@ -1,17 +1,11 @@
-export const ON_CHANGE_NOME = 'ON_CHANGE_NOME';
+export const UPDATE_FORM = 'UPDATE_FORM';
 export const ON_CHANGE_EMAIL = 'ON_CHANGE_EMAIL';
 
 
-export function nomeAction(nome) {
+export function nomeAction(field, newValue) {
     return {
-        type: ON_CHANGE_NOME,
-        nome,
-    }
-}
-
-export function emailAction(email) {
-    return {
-        type: ON_CHANGE_EMAIL,
-        email,
+        type: UPDATE_FORM,
+        field,
+        newValue,
     }
 }
